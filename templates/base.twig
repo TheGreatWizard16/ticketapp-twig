@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}TicketApp — Twig{% endblock %}</title>
+    <link rel="stylesheet" href="/styles/tokens.css"/>
+    <style>
+      /* make hero decorations not block clicks */
+      .hero .wave, .hero .circle { pointer-events: none; }
+      /* align nav items baseline */
+      header nav a, header nav button { display:inline-flex; align-items:center; line-height:1; }
+      /* simple toast style for flash/error messages */
+      .toast{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow)}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+        <a href="/" style="font-weight:700;font-size:18px">TicketApp</a>
+        <nav style="display:flex;gap:16px">
+          <a class="btn ghost" href="/dashboard">Dashboard</a>
+          <a class="btn ghost" href="/tickets">Tickets</a>
+          {% if session.ticketapp_session is defined %}
+            <a class="btn ghost" href="/auth/logout" aria-label="Logout">Logout</a>
+          {% else %}
+            <a class="btn" href="/auth/login">Login</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="padding-bottom:64px">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="container">© {{ "now"|date("Y") }} TicketApp • Max-width 1440px</div>
+    </footer>
+
+    {% if flash is defined and flash %}
+      <div class="toast" role="status" aria-live="polite">{{ flash }}</div>
+    {% endif %}
+  </body>
+</html>

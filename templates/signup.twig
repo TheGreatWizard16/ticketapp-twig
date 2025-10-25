@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+{% block title %}Create account — TicketApp{% endblock %}
+{% block content %}
+<div class="card" style="max-width:480px;margin:40px auto">
+  <h2>Create account</h2>
+  {% if error is defined and error %}<div class="error" role="alert">{{ error }}</div>{% endif %}
+  <form method="post" class="grid" style="gap:12px" action="/auth/signup">
+    <label class="label" for="email">Email</label>
+    <input id="email" class="input" name="email" value="{{ email|default('') }}" required />
+    <label class="label" for="pw">Password</label>
+    <input id="pw" type="password" class="input" name="password" required />
+    <button class="btn" type="submit">Create account</button>
+  </form>
+</div>
+{% endblock %}

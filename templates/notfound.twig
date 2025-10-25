@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+{% block title %}Not found — TicketApp{% endblock %}
+{% block content %}
+<div class="card" style="max-width:560px;margin:40px auto;text-align:center">
+  <h2>Page not found</h2>
+  <p>We can’t find that page. Try the dashboard or tickets.</p>
+  <div style="display:flex;gap:8px;justify-content:center">
+    <a class="btn" href="/dashboard">Dashboard</a>
+    <a class="btn ghost" href="/tickets">Tickets</a>
+  </div>
+</div>
+{% endblock %}

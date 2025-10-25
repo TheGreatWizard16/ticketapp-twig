@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+{% block title %}Login — TicketApp{% endblock %}
+{% block content %}
+<div class="card" style="max-width:480px;margin:40px auto">
+  <h2>Login</h2>
+  {% if error is defined and error %}<div class="error" role="alert">{{ error }}</div>{% endif %}
+  {% if flash is defined and flash %}<div class="toast" role="status">{{ flash }}</div>{% endif %}
+  <form method="post" class="grid" style="gap:12px" action="/auth/login">
+    <label class="label" for="email">Email</label>
+    <input id="email" class="input" name="email" value="{{ email|default('demo@ticket.app') }}" required />
+    <label class="label" for="pw">Password</label>
+    <input id="pw" type="password" class="input" name="password" value="Demo@1234" required />
+    <button class="btn" type="submit">Sign in</button>
+    <div>Don’t have an account? <a href="/auth/signup">Create one</a></div>
+  </form>
+</div>
+{% endblock %}

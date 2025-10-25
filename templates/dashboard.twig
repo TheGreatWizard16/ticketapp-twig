@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+{% block title %}Dashboard — TicketApp{% endblock %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="grid cols-3" style="margin-top:16px">
+  <div class="card"><strong>Total</strong><div style="font-size:36px">{{ total|default(0) }}</div></div>
+  <div class="card"><strong>Open</strong><div style="font-size:36px;color:var(--green)">{{ open|default(0) }}</div></div>
+  <div class="card"><strong>Resolved</strong><div style="font-size:36px;color:var(--gray)">{{ resolved|default(0) }}</div></div>
+</div>
+{% endblock %}
