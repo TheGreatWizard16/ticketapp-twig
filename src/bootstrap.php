@@ -8,7 +8,8 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->safeLoad();
 
-session_start();
+
+
 
 $loader = new FilesystemLoader(__DIR__ . '/../templates');
 $twig = new Environment($loader);
